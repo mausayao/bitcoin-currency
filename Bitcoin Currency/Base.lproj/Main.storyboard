@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +13,78 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Bitcoin_Currency" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="tFy-4n-XgN">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KUP-q0-AU3" userLabel="topView">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="215.5"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bitcoin" translatesAutoresizingMaskIntoConstraints="NO" id="ax2-rg-IWl">
+                                                <rect key="frame" x="75" y="53" width="225" height="110"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="225" id="1To-vI-lnd"/>
+                                                    <constraint firstAttribute="height" constant="110" id="ncB-Kp-JTd"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="ax2-rg-IWl" firstAttribute="centerY" secondItem="KUP-q0-AU3" secondAttribute="centerY" id="No3-aa-qAy"/>
+                                            <constraint firstItem="ax2-rg-IWl" firstAttribute="centerX" secondItem="KUP-q0-AU3" secondAttribute="centerX" id="xJi-Zi-FAh"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w6F-6i-UNp" userLabel="middleView">
+                                        <rect key="frame" x="0.0" y="215.5" width="375" height="216"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0LZ-ba-K1j">
+                                                <rect key="frame" x="133.5" y="0.0" width="108.5" height="70"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="70" id="gcE-LT-yc5"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="50"/>
+                                                <color key="textColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0LZ-ba-K1j" secondAttribute="trailing" id="BYB-Ms-MTO"/>
+                                            <constraint firstItem="0LZ-ba-K1j" firstAttribute="top" secondItem="w6F-6i-UNp" secondAttribute="top" id="Nvk-00-KiW"/>
+                                            <constraint firstItem="0LZ-ba-K1j" firstAttribute="centerX" secondItem="w6F-6i-UNp" secondAttribute="centerX" id="US3-hG-c6T"/>
+                                            <constraint firstItem="0LZ-ba-K1j" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="w6F-6i-UNp" secondAttribute="leading" id="YYM-gu-QDo"/>
+                                        </constraints>
+                                    </view>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6P2-ec-1Rc">
+                                        <rect key="frame" x="0.0" y="432" width="83" height="215"/>
+                                    </pickerView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="w6F-6i-UNp" firstAttribute="centerX" secondItem="tFy-4n-XgN" secondAttribute="centerX" id="5Mc-Bo-GLM"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="tFy-4n-XgN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="3iX-VB-u4Y"/>
+                            <constraint firstItem="tFy-4n-XgN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cp3-HE-qQY"/>
+                            <constraint firstAttribute="bottom" secondItem="tFy-4n-XgN" secondAttribute="bottom" id="mdU-sZ-97E"/>
+                            <constraint firstItem="tFy-4n-XgN" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="qgv-S6-HUC"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="priceLabel" destination="0LZ-ba-K1j" id="gX4-ZC-e7L"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-58.399999999999999" y="137.18140929535232"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bitcoin" width="335" height="335"/>
+    </resources>
 </document>
