@@ -19,23 +19,26 @@ class ViewController: UIViewController, UIPickerViewDelegate {
     
     let currencyArray = ["AUD", "BRL","CAD","CNY","EUR","GBP","HKD","IDR","ILS","INR","JPY","MXN","NOK","NZD","PLN","RON","RUB","SEK","SGD","USD","ZAR"]
     
+    let symbols = ["$", "R$", "$", "¥", "€", "£", "$", "Rp", "₪", "₹", "¥", "$", "kr", "$", "zł", "lei", "₽", "kr", "$", "$", "R"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         currencyPickerView.delegate = self
         currencyPickerView.dataSource = self
-        getCurrency(url: "\(baseURL)\(currencyArray[0])")
+        getCurrency(url: "\(baseURL)\(currencyArray[0])", symbol: symbols[0])
     }
     
     func updateLabel(value: String) {
         priceLabel.text = value
     }
     
-    func getCurrency(url: String) {
+    func getCurrency(url: String, symbol: String) {
         Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+            
             if response.result.isSuccess {
                 let data: JSON = JSON(response.result.value!)
                 if let value = data["ask"].double {
-                    self.updateLabel(value: String(value))
+                    self.updateLabel(value: "\(symbol) \(value)")
                 } else {
                     self.updateLabel(value: "Erro to obtain value!")
                 }
@@ -67,6 +70,7 @@ extension ViewController: UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let url = baseURL+currencyArray[row]
-        getCurrency(url: url)
+        let symbol = symbols[row]
+        getCurrency(url: url, symbol: symbol)
     }
 }
