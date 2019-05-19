@@ -7,18 +7,43 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class ViewController: UIViewController, UIPickerViewDelegate {
     
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var currencyPickerView: UIPickerView!
     
-     let currencyArray = ["AUD", "BRL","CAD","CNY","EUR","GBP","HKD","IDR","ILS","INR","JPY","MXN","NOK","NZD","PLN","RON","RUB","SEK","SGD","USD","ZAR"]
+    let baseURL = "https://apiv2.bitcoinaverage.com/indices/global/ticker/BTC"
+    
+    let currencyArray = ["AUD", "BRL","CAD","CNY","EUR","GBP","HKD","IDR","ILS","INR","JPY","MXN","NOK","NZD","PLN","RON","RUB","SEK","SGD","USD","ZAR"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         currencyPickerView.delegate = self
         currencyPickerView.dataSource = self
+        getCurrency(url: "\(baseURL)\(currencyArray[0])")
+    }
+    
+    func updateLabel(value: String) {
+        priceLabel.text = value
+    }
+    
+    func getCurrency(url: String) {
+        Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
+            if response.result.isSuccess {
+                let data: JSON = JSON(response.result.value!)
+                if let value = data["ask"].double {
+                    self.updateLabel(value: String(value))
+                } else {
+                    self.updateLabel(value: "Erro to obtain value!")
+                }
+                
+            }else {
+                self .updateLabel(value: "Connection Error!")
+            }
+        }
     }
 }
 
@@ -41,6 +66,7 @@ extension ViewController: UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print(currencyArray[row])
+        let url = baseURL+currencyArray[row]
+        getCurrency(url: url)
     }
 }
