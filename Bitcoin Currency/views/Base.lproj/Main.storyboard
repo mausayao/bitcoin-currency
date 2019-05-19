@@ -76,6 +76,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="currencyPickerView" destination="6P2-ec-1Rc" id="yO2-dD-dQG"/>
                         <outlet property="priceLabel" destination="0LZ-ba-K1j" id="gX4-ZC-e7L"/>
                     </connections>
                 </viewController>

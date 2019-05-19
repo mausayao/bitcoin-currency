@@ -54,14 +54,38 @@
 		E9E87DF522917DD100EA7C70 /* Bitcoin Currency */ = {
 			isa = PBXGroup;
 			children = (
+				E9E87E0A229192E700EA7C70 /* controllers */,
+				E9E87E09229192DF00EA7C70 /* models */,
+				E9E87E08229192D300EA7C70 /* views */,
 				E9E87DF622917DD100EA7C70 /* AppDelegate.swift */,
-				E9E87DF822917DD100EA7C70 /* ViewController.swift */,
-				E9E87DFA22917DD100EA7C70 /* Main.storyboard */,
 				E9E87DFD22917DD200EA7C70 /* Assets.xcassets */,
-				E9E87DFF22917DD200EA7C70 /* LaunchScreen.storyboard */,
 				E9E87E0222917DD200EA7C70 /* Info.plist */,
 			);
 			path = "Bitcoin Currency";
+			sourceTree = "<group>";
+		};
+		E9E87E08229192D300EA7C70 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				E9E87DFF22917DD200EA7C70 /* LaunchScreen.storyboard */,
+				E9E87DFA22917DD100EA7C70 /* Main.storyboard */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		E9E87E09229192DF00EA7C70 /* models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		E9E87E0A229192E700EA7C70 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E9E87DF822917DD100EA7C70 /* ViewController.swift */,
+			);
+			path = controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
